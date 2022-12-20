@@ -29,6 +29,8 @@ contract MyEpicNFT is ERC721URIStorage {
         "Winter"
     ];
 
+    event NewEpicNFTMinted(address sender, uint256 tokenId);
+
     constructor() ERC721("SquareNFT", "SQUARE") {
         console.log("This is my NFT contract. Woah!");
         seed = (block.timestamp + block.difficulty) % 30;
@@ -125,5 +127,6 @@ contract MyEpicNFT is ERC721URIStorage {
             newItemId,
             msg.sender
         );
+        emit NewEpicNFTMinted(msg.sender, newItemId);
     }
 }
